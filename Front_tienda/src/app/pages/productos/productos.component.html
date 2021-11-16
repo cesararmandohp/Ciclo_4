@@ -54,7 +54,28 @@
                         </span>
                       </ngb-alert>
                 
+                      
                       </h3>
+
+                      <ngb-alert [type]="'warning'" *ngIf="recibido==false" [dismissible]="true">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true" >
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span>
+                          <b> Alerta - </b> No ha seleccionado un archivo csv
+                        </span>
+                      </ngb-alert>
+                
+                      <ngb-alert [type]="'success'" *ngIf="recibido==true" [dismissible]="true">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true" >
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span>
+                          <b> Correcto - </b> Archivo csv seleccionado
+                        </span>
+                      </ngb-alert>
+                
+
                     </div>
 
 

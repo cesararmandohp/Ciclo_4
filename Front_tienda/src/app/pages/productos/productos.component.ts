@@ -41,6 +41,11 @@ export class ProductosComponent implements OnInit {
   // En caso de seleccionar archivo, escojer el primer archivo
   onChange(event: any) {
     this.file = event.target.files[0];
+
+    if (this.file!=null){
+      this.recibido=true;
+
+    }
   }
 
   // Cuandop haga click, iniciar proceso de envio
