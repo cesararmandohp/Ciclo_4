@@ -1,0 +1,101 @@
+<div class=" content animate__animated animate__fadeIn animate__slow">
+    <div class=" row">
+      <div class=" col-12">
+        <div class=" card ">
+          <div class=" card-header">
+            <div class=" row">
+                <div class=" col-sm-12 text-left">
+                    <h5 class=" card-category">Tienda virtual</h5>
+                <h2 class=" card-title"> Módulo para la carga y visualización de productos</h2>
+            </div>
+            </div>
+          </div>
+        </div>
+
+
+          <div class=" card ">
+            <div class=" card-header">
+              <h4 class=" card-title">Cargar productos</h4>
+            </div>
+            <div class="card-content">
+              <div class=" row justify-content-center">
+                <div class="col-6">
+                  
+                    <div class="input-group mt-3  mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-file-alt"></i></span>
+                        <input type="file" accept=".csv" class="form-control" aria-label="Upload" (change)="onChange($event)">
+                                                
+                      </div>
+  
+                      <div class="text-center mb-3">
+                      <button class="btn btn-outline-secondary" type="button" (click)="onUpload()"><i class="fas fa-upload"></i>Cargar productos</button>
+                      <button class="btn btn-outline-secondary ml-3" type="button" (click)="reloadCurrentPage()"><i class="fas fa-sync"></i></button>
+                    </div>
+
+
+                    <div class="container mt-3  mb-3">
+                      <h3 class= "card-img-overlay animate__animated animate__fadeIn animate__slower animate__fadeOutUp animate__delay-2s" *ngFor="let dato of resultados; let i = index">
+                      <!--Dato {{i}} obtuvo código {{dato[0]}}-->
+                      <ngb-alert [type]="'success'" *ngIf="dato[0]==201" [dismissible]="true">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true" >
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span>
+                          <b> Correcto - </b> Dato {{i}} ingresado con éxito
+                        </span>
+                      </ngb-alert>
+
+                      <ngb-alert [type]="'danger'" *ngIf="dato[0]!=201" [dismissible]="true">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true" >
+                          <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                        <span>
+                          <b> Error - </b> Dato {{i}} no ingresado
+                        </span>
+                      </ngb-alert>
+                
+                      </h3>
+                    </div>
+
+
+                    </div>
+                </div>
+              </div>
+    
+            </div>
+ 
+            <div class=" col-md-12">
+              <div class=" card">
+                <div class=" card-header">
+                  <h4 class=" card-title">Tabla de productos actuales</h4>
+                </div>
+                <div class=" card-body">
+                  <div class=" table-responsive">
+                    <table class=" table tablesorter" id="">
+                      <thead class=" text-primary">
+                        <tr>
+                          <th>Código producto</th>
+                          <th>Nombre producto</th>
+                          <th>Nit proveedor</th>
+                          <th class=" text-center">Precio compra</th>
+                          <th>Iva</th>
+                          <th class=" text-center">Precio venta</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let producto of contenido">
+                          <td>{{producto.codigoproducto}}</td>
+                          <td>{{producto.nombreproducto}}</td>
+                          <td>{{producto.nitproveedor}}</td>
+                          <td class=" text-center">{{producto.preciocompra}}</td>
+                          <td>{{producto.ivacompra}}</td>
+                          <td class=" text-center">{{producto.precioventa}}</td>
+                        </tr>
+                 
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
