@@ -10,7 +10,7 @@ export class ClientesComponent implements OnInit {
 
   res:any;
   contenido:any;
-  urlget:string="http://localhost:8080/api/usuarios";
+  urlget:string="http://localhost:8080/api/clientes";
 
 
 
@@ -29,21 +29,23 @@ export class ClientesComponent implements OnInit {
 
 
 
-  username!:string;
-  password!:string;
-  nombre!:string;
-  correo!:string;
+  cedula!:number;
+  nombrecliente!:string;
+  direccion!:string;
+  telefono!:string;
+  emailcliente!:string;
   
   
   codigorespuesta!:number;
-  postUsuario(){
+  postCliente(){
     this.objetohttp.post<any>(
-      "http://localhost:8080/api/usuarios",
+      "http://localhost:8080/api/clientes",
       {
-      "username": this.username,
-      "password": this.password,
-      "nombreusuario": this.nombre,
-      "emailusuario": this.correo
+      "cedula": this.cedula,
+      "nombrecliente": this.nombrecliente,
+      "direccion": this.direccion,
+      "telefono": this.telefono,
+      "emailcliente": this.emailcliente
       },
       {observe:'response'}
     ).subscribe(response=>{
