@@ -1,12 +1,13 @@
-import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-user",
-  templateUrl: "user.component.html"
+  selector: 'app-clientes',
+  templateUrl: './clientes.component.html',
+  styleUrls: ['./clientes.component.scss']
 })
-export class UserComponent implements OnInit {
-  
+export class ClientesComponent implements OnInit {
+
   res:any;
   contenido:any;
   urlget:string="http://localhost:8080/api/usuarios";
