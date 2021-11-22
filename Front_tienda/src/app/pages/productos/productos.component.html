@@ -57,7 +57,7 @@
                       
                       </h3>
 
-                      <ngb-alert [type]="'warning'" *ngIf="recibido==false" [dismissible]="true">
+                      <ngb-alert [type]="'warning'" *ngIf="recibido==false" [dismissible]="true" class="animate__animated animate__shakeX">
                         <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true" >
                           <i class="tim-icons icon-simple-remove"></i>
                         </button>
@@ -66,7 +66,7 @@
                         </span>
                       </ngb-alert>
                 
-                      <ngb-alert [type]="'success'" *ngIf="recibido==true" [dismissible]="true">
+                      <ngb-alert [type]="'success'" *ngIf="recibido==true" [dismissible]="true" class="animate__animated animate__shakeX">
                         <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true" >
                           <i class="tim-icons icon-simple-remove"></i>
                         </button>
@@ -108,9 +108,9 @@
                           <td>{{producto.codigoproducto}}</td>
                           <td>{{producto.nombreproducto}}</td>
                           <td>{{producto.nitproveedor}}</td>
-                          <td class=" text-center">{{producto.preciocompra}}</td>
+                          <td class=" text-center">$ {{producto.preciocompra}}</td>
                           <td>{{producto.ivacompra}}</td>
-                          <td class=" text-center">{{producto.precioventa}}</td>
+                          <td class=" text-center">$ {{producto.precioventa}}</td>
                         </tr>
                  
                       </tbody>

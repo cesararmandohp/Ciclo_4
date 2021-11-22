@@ -30,6 +30,13 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
+    path: "/clientes",
+    title: "Clientes",
+    rtlTitle: "ملف تعريفي للمستخدم",
+    icon: "icon-satisfied",
+    class: ""
+  },
+  {
     path: "/productos",
     title: "Productos",
     rtlTitle: "الرموز",
