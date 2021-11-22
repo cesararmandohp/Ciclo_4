@@ -8,28 +8,28 @@ import { ProductosComponent } from './productos.component';
 export class FileUploadService {
 
  // API url
- baseApiUrl = "http://localhost:8080/api/productos";
+ baseApiUrl = 'http://localhost:8080/api/productos';
 
- //inicializando objeto http
+ // inicializando objeto http
  constructor(private http: HttpClient) { }
 
- //variable auxiliar que almacena resultados de cada envio
+ // variable auxiliar que almacena resultados de cada envio
  resultados = Array();
 
  // Retorna un objeto observable
  upload(file: any): Promise<any[]> {
    return new Promise<any[]>((resolve, reject) => {
-     //leyendo el contenido
+     // leyendo el contenido
      var reader = new FileReader();
      reader.onloadend = (e) => {
 
        let lines = reader.result as string;
 
-       let separados = lines.split("\n");
+       let separados = lines.split('\n');
 
        for (let lineaactual of separados) {
-         lineaactual.replace(";", ",");
-         let columnas = lineaactual.split(",", 6);
+         lineaactual = lineaactual.replace(/;/g, ',');
+         let columnas = lineaactual.split(',', 6);
          this.http.post(
            this.baseApiUrl,
            {
@@ -48,7 +48,7 @@ export class FileUploadService {
              }
            );
        }
-       //console.log(this.resultados);
+       // console.log(this.resultados);
        resolve(this.resultados);
      };
      reader.readAsText(file);
