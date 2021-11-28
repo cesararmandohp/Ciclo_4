@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -51,9 +52,7 @@ public class ClienteController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-
 	}
-	
 
 	 @GetMapping("/clientes/{id}")
 	  public ResponseEntity<Cliente> getClienteById(@PathVariable("id") String id) {
@@ -114,8 +113,8 @@ public class ClienteController {
 	    }
 	  }
 
-	  @GetMapping("/clientes/{nombrecliente}")
-	  public ResponseEntity<List<Cliente>> findByNombre(@PathVariable("username") String nombrecliente) {
+	  @GetMapping("/clientes/nombrecliente/{nombrecliente}")
+	  public ResponseEntity<List<Cliente>> findByNombrecliente(@PathVariable("nombrecliente") String nombrecliente) {
 	    try {
 	      List<Cliente> clientes = clienteRepository.findByNombrecliente(nombrecliente);
 
@@ -126,6 +125,18 @@ public class ClienteController {
 	    } catch (Exception e) {
 	      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
+	  }//clientes/nombre2
+	  
+	  @GetMapping("/clientes/cedula/{cedula}")
+	  public ResponseEntity<List<Cliente>> findByCedula(@PathVariable("cedula")Long cedula){
+		 try {
+			List<Cliente> clientes = clienteRepository.findByCedula(cedula);
+			if (clientes.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			return new ResponseEntity<>(clientes,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		} 
 	  }
-
 }

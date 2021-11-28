@@ -56,8 +56,8 @@ export class ClientesComponent implements OnInit {
 
   getClientes() {
 
-    let params = new HttpParams().set('nombrecliente', this.nombrecliente);
-    this.objetohttp.get(this.urlget, { params }).
+    //let params = new HttpParams().set('nombrecliente', this.nombrecliente);
+    this.objetohttp.get(this.urlget+"/nombrecliente/"+this.nombrecliente).
       subscribe((resLeer) => {
         this.contenidoLeer = resLeer
         console.log(this.contenidoLeer)
@@ -72,10 +72,39 @@ export class ClientesComponent implements OnInit {
         this.direccion=this.contenidoLeer[0].direccion
         this.telefono=this.contenidoLeer[0].telefono
         this.emailcliente=this.contenidoLeer[0].emailcliente
+        console.log(this.urlget)
+        
       })
     }
+
 updateClientes(){
-  
+
+  //buscar la id de la cedula
+
+  let urlupdate = this.urlget+"/cedula/"+this.cedula;
+  this.res = this.objetohttp.get(urlupdate)
+  this.res.subscribe((data: any)=>
+  {
+    this.contenido=data
+    urlupdate = this.urlget+"/"+this.contenido[0].id;
+
+    this.objetohttp.put(urlupdate,
+      {
+        "nombrecliente": this.nombrecliente,
+        "direccion": this.direccion,
+        "telefono": this.telefono,
+        "emailcliente": this.emailcliente
+      },
+    {observe:"response"}
+    ).subscribe(response => {
+      this.codigorespuesta = response.status;
+      console.log(this.codigorespuesta);
+    });
+
+  });
+//usar la id en el metodo htpp put
+
+
 }
 
   reloadCurrentPage() {
