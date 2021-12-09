@@ -32,7 +32,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     IconsComponent,
     TypographyComponent,
     NotificationsComponent,
-    VentasComponent
+
     // RtlComponent
   ]
 })

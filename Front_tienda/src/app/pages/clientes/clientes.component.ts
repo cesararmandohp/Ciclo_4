@@ -9,8 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class ClientesComponent implements OnInit {
 
-
-
   constructor(private objetohttp: HttpClient) { }
 
   res: any;
