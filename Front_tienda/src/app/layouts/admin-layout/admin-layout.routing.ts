@@ -10,6 +10,7 @@ import { LoginComponent } from "src/app/pages/login/login.component";
 import { ProductosComponent } from "src/app/pages/productos/productos.component";
 import { ClientesComponent } from "src/app/pages/clientes/clientes.component";
 import { VentasComponent } from "src/app/pages/ventas/ventas.component";
+import { ConsolidadoComponent } from "src/app/pages/consolidado/consolidado.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 export const AdminLayoutRoutes: Routes = [
@@ -22,6 +23,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "productos", component: ProductosComponent },
   { path: "clientes", component: ClientesComponent },
-  { path: "ventas", component: VentasComponent}
+  { path: "ventas", component: VentasComponent},
+  { path: "consolidado", component: ConsolidadoComponent}
+
   // { path: "rtl", component: RtlComponent }
 ];

@@ -17,6 +17,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
+import { ConsolidadoComponent } from './pages/consolidado/consolidado.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { VentasComponent } from './pages/ventas/ventas.component';
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, ProductosComponent, ClientesComponent, VentasComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent,
+     LoginComponent, ProductosComponent, ClientesComponent, VentasComponent, ConsolidadoComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

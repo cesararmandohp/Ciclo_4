@@ -11,12 +11,12 @@ export class VentasComponent implements OnInit {
 
   constructor(private clientehttp: HttpClient, private toastr: ToastrService) { }
 
-  apiURL: string = "http://localhost:8080/api/";
+  apiURL: string = 'http://localhost:8080/api/';
 
   consecutivo !: any;
 
   getConsecutivo() {
-    this.clientehttp.get(this.apiURL + "ventas/consecutivo").subscribe((data) => {
+    this.clientehttp.get(this.apiURL + 'ventas/consecutivo').subscribe((data) => {
       this.consecutivo = data;
       this.consecutivo++;
       console.log(this.consecutivo);
@@ -24,13 +24,15 @@ export class VentasComponent implements OnInit {
     )
   }
 
+  nombrecliente!:any;
   cedulacliente!: any;
   clientedata: any;
   getCliente() {
-    this.clientehttp.get(this.apiURL + "clientes/cedula/" + this.cedulacliente).subscribe((data) => {
+    this.clientehttp.get(this.apiURL + 'clientes/cedula/' + this.cedulacliente).subscribe((data) => {
       this.clientedata = data;
       console.log(this.clientedata);
       console.log(this.clientedata[0].nombrecliente);
+      this.nombrecliente = this.clientedata[0].nombrecliente;
     }
     )
   }
@@ -44,21 +46,21 @@ export class VentasComponent implements OnInit {
   getProducto(numproducto: number) {
     switch (numproducto) {
       case 1:
-        this.clientehttp.get(this.apiURL + "productos/codigo/" + this.codprod1)
+        this.clientehttp.get(this.apiURL + 'productos/codigo/' + this.codprod1)
           .subscribe((data) => {
             this.product1 = data;
             console.log(this.product1);
           });
         break;
       case 2:
-        this.clientehttp.get(this.apiURL + "productos/codigo/" + this.codprod2)
+        this.clientehttp.get(this.apiURL + 'productos/codigo/' + this.codprod2)
           .subscribe((data) => {
             this.product2 = data;
             console.log(this.product2);
           });
         break;
       case 3:
-        this.clientehttp.get(this.apiURL + "productos/codigo/" + this.codprod3)
+        this.clientehttp.get(this.apiURL + 'productos/codigo/' + this.codprod3)
           .subscribe((data) => {
             this.product3 = data;
             console.log(this.product3);
@@ -99,21 +101,21 @@ export class VentasComponent implements OnInit {
   calcularTotales() {
     this.totalventa = 0.0;
     if (this.precioprod1 != null && this.precioprod1 != undefined
-      && this.precioprod1 != "") {
+      && this.precioprod1 != '') {
       this.totalventa += this.precioprod1;
       this.totaliva = (this.totalventa) * 0.19;
       this.totalplusiva = this.totalventa + ((this.totalventa) * 0.19);
 
     }
     if (this.precioprod2 != null && this.precioprod2 != undefined
-      && this.precioprod2 != "") {
+      && this.precioprod2 != '') {
       this.totalventa += this.precioprod2;
       this.totaliva = (this.totalventa) * 0.19;
       this.totalplusiva = this.totalventa + ((this.totalventa) * 0.19);
 
     }
     if (this.precioprod3 != null && this.precioprod3 != undefined
-      && this.precioprod3 != "") {
+      && this.precioprod3 != '') {
       this.totalventa += this.precioprod3;
       this.totaliva = (this.totalventa) * 0.19;
       this.totalplusiva = this.totalventa + ((this.totalventa) * 0.19);
@@ -126,47 +128,47 @@ export class VentasComponent implements OnInit {
   listadetalleventa = Array();
   ciudad: any;
   postVenta() {
-    if (this.precioprod1 != null && this.precioprod1 != undefined && this.precioprod1 != "") {
+    if (this.precioprod1 != null && this.precioprod1 != undefined && this.precioprod1 != '') {
       let aux = {
-        "cantidadproducto": this.cant1,
-        "codigoproducto": this.codprod1,
-        "valoriva": this.precioprod1 * 0.19,
-        "valortotal": this.precioprod1,
-        "valorventa": (this.precioprod1 * 0.19) + this.precioprod1
+        'cantidadproducto': this.cant1,
+        'codigoproducto': this.codprod1,
+        'valoriva': this.precioprod1 * 0.19,
+        'valortotal': this.precioprod1,
+        'valorventa': (this.precioprod1 * 0.19) + this.precioprod1
       }
       this.listadetalleventa.push(aux);
 
     }
-    if (this.precioprod2 != null && this.precioprod2 != undefined && this.precioprod2 != "") {
+    if (this.precioprod2 != null && this.precioprod2 != undefined && this.precioprod2 != '') {
       let aux = {
-        "cantidadproducto": this.cant2,
-        "codigoproducto": this.codprod2,
-        "valoriva": this.precioprod2 * 0.19,
-        "valortotal": this.precioprod2,
-        "valorventa": (this.precioprod2 * 0.19) + this.precioprod2
+        'cantidadproducto': this.cant2,
+        'codigoproducto': this.codprod2,
+        'valoriva': this.precioprod2 * 0.19,
+        'valortotal': this.precioprod2,
+        'valorventa': (this.precioprod2 * 0.19) + this.precioprod2
       }
       this.listadetalleventa.push(aux);
 
     }
-    if (this.precioprod3 != null && this.precioprod3 != undefined && this.precioprod3 != "") {
+    if (this.precioprod3 != null && this.precioprod3 != undefined && this.precioprod3 != '') {
       let aux = {
-        "cantidadproducto": this.cant3,
-        "codigoproducto": this.codprod3,
-        "valoriva": this.precioprod3 * 0.19,
-        "valortotal": this.precioprod3,
-        "valorventa": (this.precioprod3 * 0.19) + this.precioprod3
+        'cantidadproducto': this.cant3,
+        'codigoproducto': this.codprod3,
+        'valoriva': this.precioprod3 * 0.19,
+        'valortotal': this.precioprod3,
+        'valorventa': (this.precioprod3 * 0.19) + this.precioprod3
       }
       this.listadetalleventa.push(aux);
 
     }
-    this.clientehttp.post(this.apiURL + "ventas",
+    this.clientehttp.post(this.apiURL + 'ventas',
       {
-        "cedulacliente": this.cedulacliente,
-        "codigoventa": this.consecutivo,
-        "detalleventa": this.listadetalleventa,
-        "ivaventa": this.totaliva,
-        "totalventa": this.totalplusiva,
-        "valorventa": this.totalventa
+        'cedulacliente': this.cedulacliente,
+        'codigoventa': this.consecutivo,
+        'detalleventa': this.listadetalleventa,
+        'ivaventa': this.totaliva,
+        'totalventa': this.totalplusiva,
+        'valorventa': this.totalventa
       }, {
       observe: 'response'
     }).subscribe(
@@ -198,9 +200,9 @@ export class VentasComponent implements OnInit {
   postConsolidado() {
     console.log(this.ciudad)
     console.log(typeof this.ciudad)
-    this.clientehttp.post(this.apiURL + "consolidados/agregar/"+this.ciudad, 
+    this.clientehttp.post(this.apiURL + 'consolidados/agregar/'+this.ciudad, 
     {},
-    {observe:"response"}
+    {observe:'response'}
     ).subscribe((response: any) => {
 
       console.log(response.status)
@@ -239,6 +241,11 @@ export class VentasComponent implements OnInit {
         break;
     }
   }
+//
+
+
+//
+
 
   reload() {
     window.location.reload()
@@ -246,21 +253,20 @@ export class VentasComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     this.clientedata = {
-      "nombrecliente": ""
+      'nombrecliente': ''
     }
     this.product1 = [{
-      "nombreproducto": ""
+      'nombreproducto': ''
     }]
     this.product2 = [{
-      "nombreproducto": ""
+      'nombreproducto': ''
     }]
     this.product3 = [{
-      "nombreproducto": ""
+      'nombreproducto': ''
     }]
     this.getConsecutivo();
-
-
   }
 
 }
