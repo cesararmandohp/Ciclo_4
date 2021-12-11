@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-consolidado',
@@ -8,14 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsolidadoComponent implements OnInit {
 
-  constructor(private clientehttp: HttpClient) { }
+  constructor(private objetohttp: HttpClient) { }
 
-  apiURL='http://localhost:8080/api/'
+  res: any;
+  contenido: any;
+  urlget = 'http://localhost:8080/api/consolidados';
+  totalventas!: number;
+  ciudad!: string;
 
-  getconsolidadociudad(){
-    this.clientehttp.get(this.apiURL+'consolidados/ciudad/')
-  }
+
   ngOnInit(): void {
+    this.res = this.objetohttp.get(this.urlget)
+    this.res.subscribe((data: any[]) => {
+      this.contenido = data;
+      console.log(this.contenido);
+    });
+  }
+
+  reloadCurrentPage() {
+    window.location.reload();
   }
 
 }
